@@ -7,28 +7,29 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
     <link rel="stylesheet" href="<?php echo get_bloginfo('template_directory'); ?>/css/main.css">
   </head>
-  <body>
+  <!-- php methods that snag classes; inspect page shows info ie: id and such -->
+  <body <?php body_class(); ?>>
     <header>
         <div class="logo">
-          <a href="index.html" class="name">JSM</div>
+          <a href="/" class="name">JSM</div>
         </div>
         <div class="header-menu">
-          <a href="index.html">Home</a>
-          <a href="index.html#services-section">Services</a>
-          <a href="index.html#portfolio-section">Portfolio</a>
-          <a href="index.html#experience-section">Experience</a>
-          <a href="index.html#blog-section">Blog</a>
-          <a href="index.html#testimonials-section">Testimonials</a>
+          <a href="/">Home</a>
+          <a href="/#services-section">Services</a>
+          <a href="/#portfolio-section">Portfolio</a>
+          <a href="/#experience-section">Experience</a>
+          <a href="/#blog-section">Blog</a>
+          <a href="/#testimonials-section">Testimonials</a>
         </div>
         <div class="menu-btn">
           <i class="fas fa-bars"></i>
         </div>
     </header>
     <div class="mobile-menu">
-      <a href="index.html">Home</a>
-      <a href="index.html#services-section">Services</a>
-      <a href="index.html#portfolio-section">Portfolio</a>
-      <a href="index.html#experience-section">Experience</a>
-      <a href="index.html#blog-section">Blog</a>
-      <a href="index.html#testimonials-section">Testimonials</a>
+      <a href="/">Home</a>
+      <a href="/#services-section">Services</a>
+      <a href="/#portfolio-section">Portfolio</a>
+      <a href="/#experience-section">Experience</a>
+      <a href="/#blog-section">Blog</a>
+      <a href="/#testimonials-section">Testimonials</a>
     </div>
