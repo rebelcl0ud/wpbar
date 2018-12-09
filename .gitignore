@@ -1,13 +1,23 @@
 # Ignore everything in the root except the "wp-content" directory.
 /*
-!.gitignore
+!wp-content/
 
-
-# Ignore everything in the "wp-content" directory, except the "plugins"
-# and "themes" directories.
+# ignore everything in the "wp-content" directory, except:
+# plugins and themes directories
 wp-content/*
 !wp-content/plugins/
 !wp-content/themes/
+
+# ignore all plugins and themes
+# unless explicitly whitelisted below
+wp-content/plugins/*
+wp-content/themes/*
+
+# whitelisted
+# DO track these plugins, themes and stuuuff
+# add your own entries here
+!.gitignore
+!wp-content/themes/a-round-of-theme/
 
 ##========================================================================##
 #  Non-WordPress items worth ignoring (generally don't need to edit these) #
