@@ -1,37 +1,4 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title></title>
-    <meta name="viewport" content="width=device-width, user-scalable=no">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
-    <link rel="stylesheet" href="<?php echo get_bloginfo('template_directory'); ?>/css/main.css">
-  </head>
-  <body>
-    <header>
-        <div class="logo">
-          <a href="index.html" class="name">JSM</div>
-        </div>
-        <div class="header-menu">
-          <a href="index.html">Home</a>
-          <a href="index.html#services-section">Services</a>
-          <a href="index.html#portfolio-section">Portfolio</a>
-          <a href="index.html#experience-section">Experience</a>
-          <a href="index.html#blog-section">Blog</a>
-          <a href="index.html#testimonials-section">Testimonials</a>
-        </div>
-        <div class="menu-btn">
-          <i class="fas fa-bars"></i>
-        </div>
-    </header>
-    <div class="mobile-menu">
-      <a href="index.html">Home</a>
-      <a href="index.html#services-section">Services</a>
-      <a href="index.html#portfolio-section">Portfolio</a>
-      <a href="index.html#experience-section">Experience</a>
-      <a href="index.html#blog-section">Blog</a>
-      <a href="index.html#testimonials-section">Testimonials</a>
-    </div>
+  <?php get_header(); ?>
     <section id="top">
       <div class="container">
         <div class="info">
@@ -331,27 +298,5 @@
         </div>
       </div>
     </section>
-    <footer>
-      <div class="social-container">
-        <a href="http://www.facebook.com/">
-          <i class="fab fa-facebook"></i>
-        </a>
-        <a href="http://www.dribbble.com/">
-          <i class="fab fa-dribbble"></i>
-        </a>
-        <a href="http://www.facebook.com/">
-          <i class="fab fa-twitter"></i>
-        </a>
-        <a href="http://www.facebook.com/">
-          <i class="fab fa-instagram"></i>
-        </a>
-      </div>
-      <h5>Joe Santos Garcia</h5>
-      <h6>Web Developer</h6>
-    </footer>
-
-    <script src="<?php echo get_bloginfo('template_directory'); ?>/js/app.js"></script>
-
-
-  </body>
-</html>
+  <?php get_footer(); ?>
+   
