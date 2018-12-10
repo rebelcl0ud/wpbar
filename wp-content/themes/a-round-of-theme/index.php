@@ -20,6 +20,21 @@
           <div class="circle"></div>
           <h1>services</h1>
         </div>
+        
+        <!-- testing looping through service -->
+        <div class="test">
+          <!-- vars assigned; ascending order -->
+          <?php 
+            $mypod = pods('service');
+            $mypod->find('name ASC');
+          ?>
+          <!-- below loops over services created -->
+          <?php while ($mypod->fetch()) : ?>
+            <h1>service</h1>
+          <?php endwhile; ?>
+        </div>
+        <!-- end testing looping through service -->
+
         <div class="services-container">
           <div class="box blue">
             <i class="fas fa-trophy"></i>
