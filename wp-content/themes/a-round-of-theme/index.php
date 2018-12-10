@@ -79,7 +79,13 @@
               $loop_count += 1;
             ?>
             <a href="portfoli/#" class="box image<?php echo $loop_count; ?>">
-              <div class="image">
+              <div class="image" style='background: url("https://cdn.dribbble.com/users/823181/screenshots/4511085/scenery_illustration.gif");
+                height: 100%;
+                width: 100%;
+                background-size: cover;
+                background-position: center center;
+                background-repeat: no-repeat;
+              }'>
                 <div class="hover-bg">
                   <div class="title">
                     <div class="text"><?php echo $project_type; ?></div>
