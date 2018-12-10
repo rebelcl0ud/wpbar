@@ -144,21 +144,29 @@
             </div>
           </div>
           <div class="info">
-            <div class="info-box">
-              <h4>Graphic Artist - Nike</h4>
-              <span class="date">June 2012 - July 2013</span>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.  </p>
-            </div>
-            <div class="info-box">
-              <h4>Graphic Artist - Nike</h4>
-              <span class="date">June 2012 - July 2013</span>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
-            </div>
-            <div class="info-box">
-              <h4>Graphic Artist - Nike</h4>
-              <span class="date">June 2012 - July 2013</span>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
-            </div>
+            <!-- start loop over experience -->
+            <!-- vars assigned -->
+            <?php 
+              $mypod = pods('experience');
+              $mypod->find('name');
+            ?>
+            <!-- below loops over services created -->
+            <?php while ($mypod->fetch()) : ?>
+              <?php 
+                // set vars
+                $name = $mypod->field('name');
+                $content = $mypod->field('content');
+                $permalink = $mypod->field('permalink');
+                $location = $mypod->field('location');
+                $start_end_dates = $mypod->field('start_end_dates');
+              ?>
+              <div class="info-box">
+                <h4><?php echo $name ?> - <?php echo $location ?></h4>
+                <span class="date"><?php echo $start_end_dates ?></span>
+                <p><?php echo $content ?></p>
+              </div>
+            <?php endwhile; ?>
+            <!-- end loop over services created -->
           </div>
         </div>
       </div>
