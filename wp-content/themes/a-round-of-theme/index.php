@@ -54,69 +54,41 @@
           <h1>portfolio</h1>
         </div>
         <div class="portfolio-container">
-          <a href="portfoli/#" class="box image1">
-            <div class="image">
-              <div class="hover-bg">
-                <div class="title">
-                  <div class="text">Ecommerce</div>
+          <!-- start loop over projects -->
+          <!-- vars assigned; ascending order -->
+          <?php 
+            $mypod = pods('project');
+            $mypod->find('name ASC');
+            $loop_count = 0;
+          ?>
+          <!-- below loops over projects -->
+          <?php while ($mypod->fetch()) : ?>
+            <?php 
+              // set vars
+              $name = $mypod->field('name');
+              $project_type = $mypod->field('project_type');
+              $permalink = $mypod->field('permalink');
+              $project_url = $mypod->field('project_url');
+              $github_url = $mypod->field('github_url');
+              $tech_icon_1 = $mypod->field('tech_icon_1');
+              $tech_icon_2 = $mypod->field('tech_icon_2');
+              $tech_icon_3 = $mypod->field('tech_icon_3');
+              $tech_icon_4 = $mypod->field('tech_icon_4');
+              $youtube_url = $mypod->field('youtube_url');
+              // will change class `box image #` as it loops
+              $loop_count += 1;
+            ?>
+            <a href="portfoli/#" class="box image<?php echo $loop_count; ?>">
+              <div class="image">
+                <div class="hover-bg">
+                  <div class="title">
+                    <div class="text"><?php echo $project_type; ?></div>
+                  </div>
                 </div>
               </div>
-            </div>
-          </a>
-          <a href="portfoli/#" class="box image2">
-            <div class="image">
-              <div class="hover-bg">
-                <div class="title">
-                  <div class="text">Ecommerce</div>
-                </div>
-              </div>
-            </div>
-          </a>
-          <a href="portfoli/#" class="box image3">
-            <div class="image">
-              <div class="hover-bg">
-                <div class="title">
-                  <div class="text">Ecommerce</div>
-                </div>
-              </div>
-            </div>
-          </a>
-          <a href="portfoli/#" class="box image4">
-            <div class="image">
-              <div class="hover-bg">
-                <div class="title">
-                  <div class="text">Ecommerce</div>
-                </div>
-              </div>
-            </div>
-          </a>
-          <a href="portfoli/#" class="box image5">
-            <div class="image">
-              <div class="hover-bg">
-                <div class="title">
-                  <div class="text">Ecommerce</div>
-                </div>
-              </div>
-            </div>
-          </a>
-          <a href="portfoli/#" class="box image6">
-            <div class="image">
-              <div class="hover-bg">
-                <div class="title">
-                  <div class="text">Ecommerce</div>
-                </div>
-              </div>
-            </div>
-          </a>
-          <a href="portfoli/#" class="box image7">
-            <div class="image">
-              <div class="hover-bg">
-                <div class="title">
-                  <div class="text">Ecommerce</div>
-                </div>
-              </div>
-            </div>
-          </a>
+            </a>
+          <?php endwhile; ?>
+          <!-- end loop over projects -->
         </div>
       </div>
     </section>
