@@ -148,7 +148,7 @@
             <!-- vars assigned -->
             <?php 
               $mypod = pods('experience');
-              $mypod->find('name');
+              $mypod->find('start_end_dates DESC');
             ?>
             <!-- below loops over services created -->
             <?php while ($mypod->fetch()) : ?>
