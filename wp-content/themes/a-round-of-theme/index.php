@@ -20,9 +20,8 @@
           <div class="circle"></div>
           <h1>services</h1>
         </div>
-        
-        <!-- testing looping through service -->
-        <div class="test">
+        <div class="services-container">
+          <!-- start loop over services -->
           <!-- vars assigned; ascending order -->
           <?php 
             $mypod = pods('service');
@@ -30,27 +29,21 @@
           ?>
           <!-- below loops over services created -->
           <?php while ($mypod->fetch()) : ?>
-            <h1>service</h1>
+            <?php 
+              // set vars
+              $name = $mypod->field('name');
+              $content = $mypod->field('content');
+              $permalink = $mypod->field('permalink');
+              $icon_class = $mypod->field('icon_class');
+              $border_color = $mypod->field('border_color');
+            ?>
+            <div class="box <?php echo $border_color ?>">
+              <i class="<?php echo $icon_class ?>"></i>
+              <h5><?php echo $name ?></h5>
+              <p><?php echo $content ?></p>
+            </div>
           <?php endwhile; ?>
-        </div>
-        <!-- end testing looping through service -->
-
-        <div class="services-container">
-          <div class="box blue">
-            <i class="fas fa-trophy"></i>
-            <h5>Best Quality</h5>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-          </div>
-          <div class="box red">
-            <i class="fas fa-plane"></i>
-            <h5>Best Quality</h5>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-          </div>
-          <div class="box yellow">
-            <i class="fas fa-money-check-alt"></i>
-            <h5>Best Quality</h5>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-          </div>
+          <!-- end loop over services created -->
         </div>
       </div>
     </section>
