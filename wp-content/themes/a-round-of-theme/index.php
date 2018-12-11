@@ -172,6 +172,21 @@
           <h1>Blog</h1>
         </div>
         <div class="blog-container">
+          <!-- REF; https://developer.wordpress.org/themes/basics/the-loop/ -->
+          <?php if(have_posts()) : while (have_posts()) : the_post(); ?>
+          <!-- post content -->
+            <div id="post-<?php the_ID(); ?>">
+              <h1><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h1>
+              <?php the_content(); ?>
+              <?php get_the_excerpt(); ?>
+              <?php the_post_thumbnail_url('medium'); ?>
+            </div>
+          <?php endwhile; ?>
+          <?php else : ?>
+            <div>
+              <h1>Blogs Coming Soon</h1>
+            </div>
+          <?php endif; ?>
           <!-- start of post -->
           <a href="blog/#" class="post">
             <div class="post-img" style="background: url('https://jelvix.com/images/blog/5a186830155ab.jpg');"></div>
