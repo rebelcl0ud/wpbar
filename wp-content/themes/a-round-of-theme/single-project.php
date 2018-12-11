@@ -24,7 +24,31 @@ get_header();
   $tech_icon_3 = $mypod->field('tech_icon_3');
   $tech_icon_4 = $mypod->field('tech_icon_4');
   $youtube_url = $mypod->field('youtube_url');
-?>
+
+	// start showing featured images
+	$row = $mypod->row();
+	$post_id = $row['ID'];
+	if(!function_exists('get_post_featured_image')) {
+	  function get_post_featured_image($post_id, $size) {
+	    $return_array = [];
+	    // get_post_thumbnail; built-in worpress method
+	    $image_id = get_post_thumbnail_id($post_id);
+	    $image = wp_get_attachment_image_src($image_id, $size);
+	    $image_url = $image[0];
+	    $image_alt = get_post_meta($image_id, '_wp_attachment_image_alt', true);
+	    $image_post = get_post($image_id);
+	    $image_caption = $image_post->post_excerpt;
+	    $image_description = $image_post->post_content;
+	    $return_array['id'] = $image_id;
+	    $return_array['url'] = $image_url;
+	    $return_array['alt'] = $image_alt;
+	    $return_array['caption'] = $image_caption;
+	    $return_array['description'] = $image_description;
+	    return $return_array;
+	  }
+	}
+	$image_properties = get_post_featured_image($post_id, 'full');
+?>  
 
 <!-- testing pulling in correct info -->
 <!--p><!?php echo $name; ?></p-->
@@ -32,7 +56,7 @@ get_header();
 <section id="portfolio-projects">
   <div class="container">
     <div class="project-image">
-      <div class="img" style="background: url('https://cdn.dribbble.com/users/825808/screenshots/4811301/attachments/1081533/a_-_homepage.png')"></div>
+      <div class="img" style="background: url('<?php echo $image_properties[url]; ?>')"></div>
     </div>
     <h1><?php echo $name ?></h1>
     <div class="info">
