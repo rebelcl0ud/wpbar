@@ -16,6 +16,14 @@ get_header();
 	// set vars
 	$name = $mypod->field('name');
 	$permalink = $mypod->field('permalink');
+	$content = $mypod->field('content');
+  $project_url = $mypod->field('project_url');
+  $github_url = $mypod->field('github_url');
+  $tech_icon_1 = $mypod->field('tech_icon_1');
+  $tech_icon_2 = $mypod->field('tech_icon_2');
+  $tech_icon_3 = $mypod->field('tech_icon_3');
+  $tech_icon_4 = $mypod->field('tech_icon_4');
+  $youtube_url = $mypod->field('youtube_url');
 ?>
 
 <!-- testing pulling in correct info -->
@@ -26,38 +34,36 @@ get_header();
     <div class="project-image">
       <div class="img" style="background: url('https://cdn.dribbble.com/users/825808/screenshots/4811301/attachments/1081533/a_-_homepage.png')"></div>
     </div>
-    <h1>Nike Project</h1>
+    <h1><?php echo $name ?></h1>
     <div class="info">
       <div class="buttons">
-        <a href="#"><i class="fas fa-desktop"></i> View Project</a>
-        <a href="#"><i class="fas fa-code"></i> View Code</a>
+        <a href="<?php echo $project_url ?>"><i class="fas fa-desktop"></i> View Project</a>
+        <a href="<?php echo $github_url ?>"><i class="fas fa-code"></i> View Code</a>
       </div>
     </div>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    <?php echo $content; ?>
 
     <div class="technologies">
       <h3>Technologies</h3>
 
       <div class="icons">
         <div class="icon">
-          <img src="http://www.stickpng.com/assets/images/5847ea22cef1014c0b5e4833.png">
+          <img src="<?php echo $tech_icon_1; ?>">
         </div>
         <div class="icon">
-          <img src="http://www.stickpng.com/assets/images/5847ea22cef1014c0b5e4833.png">
+          <img src="<?php echo $tech_icon_2; ?>">
         </div>
         <div class="icon">
-          <img src="http://www.stickpng.com/assets/images/5847ea22cef1014c0b5e4833.png">
+          <img src="<?php echo $tech_icon_3; ?>">
         </div>
         <div class="icon">
-          <img src="http://www.stickpng.com/assets/images/5847ea22cef1014c0b5e4833.png">
+          <img src="<?php echo $tech_icon_4; ?>">
         </div>
       </div>
     </div>
     <div class="video">
       <h3>Video Walkthrough</h3>
-      <iframe width="560" height="315" src="https://www.youtube.com/embed/cFZr-34aiVc" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/<?php echo $youtube_url; ?>" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
     </div>
   </div>
 </section>
