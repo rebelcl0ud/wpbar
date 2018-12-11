@@ -68,18 +68,35 @@
               $name = $mypod->field('name');
               $project_type = $mypod->field('project_type');
               $permalink = $mypod->field('permalink');
-              $project_url = $mypod->field('project_url');
-              $github_url = $mypod->field('github_url');
-              $tech_icon_1 = $mypod->field('tech_icon_1');
-              $tech_icon_2 = $mypod->field('tech_icon_2');
-              $tech_icon_3 = $mypod->field('tech_icon_3');
-              $tech_icon_4 = $mypod->field('tech_icon_4');
-              $youtube_url = $mypod->field('youtube_url');
               // will change class `box image #` as it loops
               $loop_count += 1;
+
+              // start showing featured images
+              $row = $mypod->row();
+              $post_id = $row['ID'];
+              if(!function_exists('get_post_featured_image')) {
+                function get_post_featured_image($post_id, $size) {
+                  $return_array = [];
+                  // get_post_thumbnail; built-in worpress method
+                  $image_id = get_post_thumbnail_id($post_id);
+                  $image = wp_get_attachment_image_src($image_id, $size);
+                  $image_url = $image[0];
+                  $image_alt = get_post_meta($image_id, '_wp_attachment_image_alt', true);
+                  $image_post = get_post($image_id);
+                  $image_caption = $image_post->post_excerpt;
+                  $image_description = $image_post->post_content;
+                  $return_array['id'] = $image_id;
+                  $return_array['url'] = $image_url;
+                  $return_array['alt'] = $image_alt;
+                  $return_array['caption'] = $image_caption;
+                  $return_array['description'] = $image_description;
+                  return $return_array;
+                }
+              }
+              $image_properties = get_post_featured_image($post_id, 'full');  
             ?>
-            <a href="portfoli/#" class="box image<?php echo $loop_count; ?>">
-              <div class="image" style='background: url("https://cdn.dribbble.com/users/823181/screenshots/4511085/scenery_illustration.gif");
+            <a href="<?php echo $permalink ?>" class="box image<?php echo $loop_count; ?>">
+              <div class="image" style='background: url("<?php echo $image_properties[url]; ?>");
                 height: 100%;
                 width: 100%;
                 background-size: cover;
