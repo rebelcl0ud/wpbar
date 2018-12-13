@@ -8,16 +8,23 @@
 <!-- not using PODS; using blog built in methods -->
 
 <section id="portfolio-projects">
-  <div class="container">
+  <div class="container blog">
   	<!-- REF; https://developer.wordpress.org/themes/basics/the-loop/ -->
     <?php if(have_posts()) : while (have_posts()) : the_post(); ?>
   	<h1><?php the_title(); ?></h1>
     <div class="project-image">
       <div class="img" style="background: url('<?php the_post_thumbnail_url('medium'); ?>'); background-size: cover !important; background-position: center center !important;"></div>
     </div>
-     
-    <?php the_content(); ?>
-
+    <div class="content-area">
+    	<div class="inner">
+    	 <?php the_content(); ?>
+    	</div>
+    	<div class="widgets">
+    		<div class="widget-box">
+    			testing...
+    		</div>
+    	</div>
+    </div>
   </div>
   <?php endwhile; ?>
     <?php else : ?>
