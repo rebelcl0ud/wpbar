@@ -18,6 +18,15 @@
 			'before_title'  => '<h3 class="widget-title">',
 			'after_title'   => '</h3> '
 		));
+
+		register_sidebar( array (
+			'name'          => __('bottom-sidebar', 'portfolio'),
+			'id'            => 'bottom-sidebar-2',
+			'before_widget' => '<div id="%1$s" class="widget-box %2$s">',
+			'after_widget'  => '</div>',
+			'before_title'  => '<h3 class="widget-title">',
+			'after_title'   => '</h3> '
+		));
 	}
 	add_action('widgets_init', 'portfolio_widgets_init');
 
