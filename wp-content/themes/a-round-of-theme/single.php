@@ -20,9 +20,7 @@
     	 <?php the_content(); ?>
     	</div>
     	<div class="widgets">
-    		<div class="widget-box">
-    			testing...
-    		</div>
+    		<?php get_sidebar( 'right-sidebar' ); ?>
     	</div>
     </div>
   </div>
