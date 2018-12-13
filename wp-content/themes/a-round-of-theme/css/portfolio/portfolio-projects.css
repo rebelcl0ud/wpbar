@@ -92,7 +92,7 @@
   display: flex;
 }
 
-#portfolio-projects .blog .content-area .inside {
+#portfolio-projects .blog .content-area .inner {
   width: 70%;
   display: inline-block;
   padding: 15px;
@@ -130,6 +130,16 @@
   padding: 3px;
   letter-spacing: 1px;
 }
+
+#portfolio-projects .blog .content-area .inner .widget-box.widget_meta {
+  padding: 15px 15px 15px 5px;
+}
+
+#portfolio-projects .blog .content-area .inner .widget-box.widget_meta h3 {
+  margin: 0 0 1rem;
+  font-size: 18px;
+}
+
 /* end of single.php */
 
 @media only screen and (max-width: 960px){
