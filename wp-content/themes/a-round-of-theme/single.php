@@ -18,9 +18,10 @@
     <div class="content-area">
     	<div class="inner">
     	 <?php the_content(); ?>
+    	 <?php dynamic_sidebar( 'bottom-sidebar' ); ?>
     	</div>
     	<div class="widgets">
-    		<?php get_sidebar( 'right-sidebar' ); ?>
+    		<?php dynamic_sidebar( 'right-sidebar' ); ?>
     	</div>
     </div>
   </div>
