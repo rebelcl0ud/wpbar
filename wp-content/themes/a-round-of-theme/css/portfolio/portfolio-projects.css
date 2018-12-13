@@ -87,6 +87,27 @@
   text-align: center;
 }
 
+/* single.php */
+#portfolio-projects .blog .content-area {
+  display: flex;
+}
+
+#portfolio-projects .blog .content-area .inside {
+  width: 70%;
+  display: inline-block;
+}
+
+#portfolio-projects .blog .content-area .widgets {
+  width: 30%;
+  display: inline-block;
+}
+
+#portfolio-projects .blog .content-area .widgets .widget-box{
+  background: grey;
+  height: 100%;
+}
+/* end of single.php */
+
 @media only screen and (max-width: 960px){
   #portfolio-projects h1{
     font-size: 3rem;
