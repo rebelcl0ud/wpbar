@@ -37,10 +37,13 @@ axios.get('wp-json/wp/v2/testimonials')
 						console.log(postImages);
 					})
 				})
-		})
-		
-		
+				// to catch error of 2nd call
+				.catch((err) => {
+					console.error(err)
+				})
+		})	
 	})
+	// to catch error of 1st call
 	.catch((err) => {
 		console.error(err)
 	})
