@@ -204,6 +204,11 @@
           <div class="square"></div>
           <h1>Testimonials</h1>
         </div>
+        <!-- setting up testimonial -->
+        <div id="testimonials-app">
+          
+        </div>
+        
         <div class="testimonials-container">
           <div class="test-sides test-left">
             <div class="person-img" style="background: url('https://d3iw72m71ie81c.cloudfront.net/male-30.jpg');">
