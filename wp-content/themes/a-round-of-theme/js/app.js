@@ -59,6 +59,16 @@ axios.get('wp-json/wp/v2/testimonials')
 			return this;
 		})
 
+		let clickedLeft = () => {
+			postData.swap(1,0);
+			render(appTemplate(postData, document.getElementById('testimonials-app')))
+		}
+
+		let clickedRight = () => {
+			postData.swap(1,2);
+			render(appTemplate(postData, document.getElementById('testimonials-app')))
+		}
+
 		const appTemplate = (data) => html `
 			<div class="testimonials-container">
         <div class="test-sides test-left">
