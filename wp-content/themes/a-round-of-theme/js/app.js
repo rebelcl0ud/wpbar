@@ -81,6 +81,12 @@ axios.get('wp-json/wp/v2/testimonials')
 			render(appTemplate(postData), document.getElementById('testimonials-app'))
 		}
 
+		let decodeContent = (encodedStr) => {
+			let div = document.createElement('div');
+			div.innerHTML = encodedStr;
+			return div.textContent;
+		}
+
 		// https://lit-html.polymer-project.org/guide/template-reference#binding-types
 		const appTemplate = (data) => html `
 			<div class="testimonials-container">
@@ -102,7 +108,7 @@ axios.get('wp-json/wp/v2/testimonials')
             </div>
           </div>
           <p>
-            ${testimonialsData[1].content.rendered}
+            ${decodeContent(testimonialsData[1].content.rendered)}
           </p>
         </div>
         <div class="test-sides test-right" @click=${(e) => clickedRight()}>
