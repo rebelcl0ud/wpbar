@@ -15,6 +15,18 @@ import { html, render } from 'https://unpkg.com/lit-html?module';
 let postData = [];
 let postImages = [];
 
+/** 
+	item.id changes from 1st GET req to 2nd GET req; 1st id is used to fetch image data obj (2nd call) where id differs, that id matches featured_media from 1st GET so that's what I'm using to snag the correct associated image
+
+	3 images viewed as an array; left being at 0 index; mid at 1 index; right at 2 index
+
+	the click events right/ left are to swap with mid picture(all info featured), show name/position and testimonial written
+**/
+let getImageById = (featured_media) => {
+	let Image = postImages.filter((item) => item.id === featured_media)
+		return Image[0].image;
+}
+
 // https://github.com/axios/axios
 axios.get('wp-json/wp/v2/testimonials')
 	.then((response) => {
@@ -23,9 +35,9 @@ axios.get('wp-json/wp/v2/testimonials')
 		// loop over posts, snag IDs
 		postData.map((item) => {
 			// console.log(item.id);
-
+		
 			// IDs used to snag images
-			return axios.get(`http://localhost:8888/wp-json/wp/v2/media?parent=${item.id}`)
+			return axios.get(`wp-json/wp/v2/media?parent=${item.id}`)
 				.then((res) => {
 					// console.log(res.data)
 					let imageLookup = res.data;
@@ -35,8 +47,8 @@ axios.get('wp-json/wp/v2/testimonials')
 							image: item.media_details.sizes.medium.source_url
 						});
 						// console.log(postImages);
-						initApp(response);
 					})
+					initApp(response);
 				})
 				// to catch error of 2nd call
 				.catch((err) => {
@@ -51,7 +63,7 @@ axios.get('wp-json/wp/v2/testimonials')
 
 	const initApp = (data) => {
 		let testimonialsData = data.data;
-
+		// console.log(testimonialsData[0].featured_media);
 		Array.prototype.swap = ((x,y) => {
 			let b = this[x];
 			this[x] = this[y];
@@ -61,41 +73,42 @@ axios.get('wp-json/wp/v2/testimonials')
 
 		let clickedLeft = () => {
 			postData.swap(1,0);
-			render(appTemplate(postData, document.getElementById('testimonials-app')))
+			render(appTemplate(postData), document.getElementById('testimonials-app'))
 		}
 
 		let clickedRight = () => {
 			postData.swap(1,2);
-			render(appTemplate(postData, document.getElementById('testimonials-app')))
+			render(appTemplate(postData), document.getElementById('testimonials-app'))
 		}
 
+		// https://lit-html.polymer-project.org/guide/template-reference#binding-types
 		const appTemplate = (data) => html `
 			<div class="testimonials-container">
-        <div class="test-sides test-left">
-          <div class="person-img" style="background: url('https://d3iw72m71ie81c.cloudfront.net/male-30.jpg');">
+        <div class="test-sides test-left" @click=${(e) => clickedLeft()}>
+          <div class="person-img" style="background: url('${getImageById(testimonialsData[0].featured_media)}');">
             <div class="hover-bg">
-              <div class="name">James</div>
+              <div class="name">${testimonialsData[0].name_writer}</div>
             </div>
           </div>
         </div>
         <div class="test-center">
           <div class="header">
-            <div class="user-img" style="background: url('https://d3iw72m71ie81c.cloudfront.net/8912fe22-7970-4e15-a3a1-abef9f2fb4b5')">
+            <div class="user-img" style="background: url('${getImageById(testimonialsData[1].featured_media)}')">
 
             </div>
             <div class="info">
-              <h4>Jenny Benzino</h4>
-              <span>CEO, Nike</span>
+              <h4>${testimonialsData[1].name_writer}</h4>
+              <span>${testimonialsData[1].position_writer}</span>
             </div>
           </div>
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            ${testimonialsData[1].content.rendered}
           </p>
         </div>
-        <div class="test-sides test-right">
-          <div class="person-img" style="background: url('https://d3iw72m71ie81c.cloudfront.net/88b95197-fd1e-4e11-8793-2903a5cfd06e-10584053_10153749310922416_3125632463004974493_n.jpg')">
+        <div class="test-sides test-right" @click=${(e) => clickedRight()}>
+          <div class="person-img" style="background: url('${getImageById(testimonialsData[2].featured_media)}')">
             <div class="hover-bg">
-              <div class="name">Bryant</div>
+              <div class="name">${testimonialsData[2].name_writer}</div>
             </div>
           </div>
         </div>
