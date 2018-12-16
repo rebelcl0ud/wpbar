@@ -206,7 +206,9 @@
         </div>
         <!-- setting up testimonial -->
         <div id="testimonials-app">
+          <!-- spinner indicating data loading -->
           <div class="spinner">
+            <h2>Loading</h2><br />
             <div class="bounce1"></div>
             <div class="bounce2"></div>
             <div class="bounce3"></div>
