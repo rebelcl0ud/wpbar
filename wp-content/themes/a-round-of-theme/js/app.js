@@ -16,7 +16,7 @@ let postData = [];
 let postImages = [];
 
 /** 
-	item.id changes from 1st GET req to 2nd GET req; 1st id is used to fetch image data obj (2nd call) where id differs, that id matches featured_media from 1st GET so that's what I'm using to snag the correct associated image
+	EDIT: instead of using id, using featured_media off the bat to make 2nd call which is listed as id in that data obj; refactored; using full instead of medium to grab source_url for img, seems some pics don't load med, haven't seen an issue with 'full'
 
 	3 images viewed as an array; left being at 0 index; mid at 1 index; right at 2 index
 
@@ -34,20 +34,17 @@ axios.get('wp-json/wp/v2/testimonials')
 		postData = response.data;
 		// loop over posts, snag IDs
 		postData.map((item) => {
-			// console.log(item.id);
+			// console.log(item);
 		
-			// IDs used to snag images
-			return axios.get(`wp-json/wp/v2/media?parent=${item.id}`)
+			// featured_media/IDs used to snag images
+			return axios.get(`wp-json/wp/v2/media/${item.featured_media}`)
 				.then((res) => {
-					// console.log(res.data)
-					let imageLookup = res.data;
-					imageLookup.map((item) => {
-						postImages.push({
-							id: item.id,
-							image: item.media_details.sizes.medium.source_url
-						});
-						// console.log(postImages);
-					})
+					// console.log(res.data);
+					postImages.push({
+						id: res.data.id,
+						image: res.data.media_details.sizes.full.source_url
+					});
+					// console.log(postImages);	
 					initApp(response);
 				})
 				// to catch error of 2nd call
