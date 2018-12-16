@@ -206,6 +206,11 @@
         </div>
         <!-- setting up testimonial -->
         <div id="testimonials-app">
+          <div class="spinner">
+            <div class="bounce1"></div>
+            <div class="bounce2"></div>
+            <div class="bounce3"></div>
+          </div>
           <!-- appTemplate data from app.js will go here -->
         </div>
       </div>
