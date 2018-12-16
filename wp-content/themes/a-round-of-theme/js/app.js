@@ -63,12 +63,12 @@ axios.get('wp-json/wp/v2/testimonials')
 
 	const initApp = (data) => {
 		let testimonialsData = data.data;
-		// console.log(testimonialsData[0].featured_media);
+		
 		Array.prototype.swap = ((x,y) => {
-			let b = this[x];
-			this[x] = this[y];
-			this[y] = b;
-			return this;
+			let temp = testimonialsData[x];
+			testimonialsData[x] = testimonialsData[y];
+			testimonialsData[y] = temp;
+			return testimonialsData;
 		})
 
 		let clickedLeft = () => {
