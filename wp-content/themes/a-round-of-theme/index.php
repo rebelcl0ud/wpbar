@@ -3,9 +3,9 @@
       <div class="container">
         <div class="info">
           <div class="blue-square"></div>
-          <h1>Joe Santos Garcia</h1>
-          <p>Web Developer</p>
-          <a href="#">Latest Works</a>
+          <h1><?php echo acronym(get_bloginfo('name')); ?></h1>
+          <p><?php echo get_bloginfo('name'); ?></p>
+          <a href="#portfolio-section">Latest Works</a>
         </div>
         <div class="img">
           <div class="background-img">
